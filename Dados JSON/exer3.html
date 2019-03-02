@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/recfederal.js"></script>
+        <style>
+            img{
+                width: 100px;
+                height: 100px;
+            }
+        
+        </style>
+        <script>
+            $(function(){
+                $("#btn1").click(pesquisarAlunos);
+                $("#btn2").click(function(){
+                    listarAlunos();
+                }); 
+            });
+            function pesquisarAlunos(){
+                var valorRgm = $("#pesq").val();
+                var achou=false;
+                
+                for (var i=0; i < alunos.length; i++){
+                    if(alunos[i].rgm == valorRgm){
+                        $("#resp").html("<b>RGM:</b>"+alunos[i].rgm+"<br>"+
+                                        "<b>Nome:</b>"+alunos[i].nome+"<br>"+
+                                        "<b>Idade:</b>"+alunos[i].idade);
+                        achou = true;
+                        break;
+                    }
+                }
+                if (achou == false){
+                    $("#resp").html("RGm não encontrado!");
+                }
+            }
+            function listarAlunos(){
+                $("relatorio").empty();
+                for (var i=0; i<alunos.length; i++){
+                    $("#relatorio").append("</b></center><hr><img src='"+alunos[i].foto+"'><br>");
+                    $("#relatorio").append("<br><b>Nome: </b>"+alunos[i].Nome);
+                    $("#relatorio").append("<br><b>Nome: </b>"+alunos[i].CPF);
+                    $("#relatorio").append("<br><b>RG: </b>"+alunos[i].RG);
+                    $("#relatorio").append("<br><b>Idade: </b>"+alunos[i].birthday);
+                    $("#relatorio").append("<br><b>Logradouro: </b>"+alunos[i].logradouro);
+                    $("#relatorio").append("<br><b>Numero: </b>"+alunos[i].numero);
+                    $("#relatorio").append("<br><b>Bairro: </b>"+alunos[i].bairro);
+                    $("#relatorio").append("<br><b>CEP: </b>"+alunos[i].cep);
+                    $("#relatorio").append("<br><b>Cidade: </b>"+alunos[i].cidade);
+                    $("#relatorio").append("<br><b>Estado: </b>"+alunos[i].estado);
+                    $("#relatorio").append("<br><b>Telefone: </b>"+alunos[i].telefone);
+                    $("#relatorio").append("<br><b>Celular: </b>"+alunos[i].celular);
+                    $("#relatorio").append("<br><b>Telefone: </b>"+alunos[i].email);
+                    $("#relatorio").append("<br><b>Renda: </b>"+alunos[i].renda);
+                    $("#relatorio").append("<br><b>Banco: </b>"+alunos[i].banco);
+                    $("#relatorio").append("<br><b>Agencia: </b>"+alunos[i].agencia);
+                    $("#relatorio").append("<br><b>Conta: </b>"+alunos[i].account_number);
+                    $("#relatorio").append("<hr>");
+                }
+            }
+        </script>
+    </head>
+<body>
+    <form>
+        <input type="button" id="btn2" value="Listar Todos"><br>
+    </form>
+    <div id="relatorio"></div>
+    <div id="resp"></div>
+</body>
+</html>
